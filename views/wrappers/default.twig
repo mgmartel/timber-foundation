@@ -1,0 +1,22 @@
+{#
+
+Most wrappers will look exactly the same. This theme uses a custom default wrapper
+only to add responsive header regions. Without those, it could just do with the
+Timber Regions wrapper.
+
+#}
+{% extends 'default/wrappers/default.twig' %}
+
+{% block header %}
+    <header class="header" role="banner">
+        <div class="hide-for-medium-up">
+            {%- include 'regions/_get_region.twig' with { region: 'header', region_id: 'header-small' } -%}
+        </div>
+
+        <div class="show-for-medium-up">
+            {%- include 'regions/_get_region.twig' with { region: 'header', region_id: 'header-large' } -%}
+        </div>
+
+        {% include 'regions/_get_region.twig' with { region: 'header' } %}
+    </header>
+{% endblock %}

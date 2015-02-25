@@ -1,0 +1,22 @@
+{#
+
+Example of a no sidebar layout that is normal width, centered. Normal content
+width in this theme is 8 columns (on large screens). This template renders the
+content in an 8 column container that is offset by 2, and renders an extra
+placeholder 2 column div after it to fill the gap.
+
+#}
+{% extends "layouts/base.twig" %}
+
+{% block layout %}
+    <div class="row">
+
+        <div class="small-12 large-8 large-offset-2 columns no-sidebar" id="content" role="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div class="large-2 columns"></div>
+
+    </div>
+{% endblock %}

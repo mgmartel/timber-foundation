@@ -1,0 +1,19 @@
+{#
+
+Foundation compontent tab bar. Introduced for the offcanvas layout, but can be
+used separately as well.
+
+See: http://foundation.zurb.com/docs/components/offcanvas.html#tab-bar-container
+
+#}
+<nav class="tab-bar">
+    <section class="middle tab-bar-section">
+        <h1 class="title"><a href='{{ site.url }}' alt='{{ site.title }}'>{{ site.title }}</a></h1>
+    </section>
+
+    <section class="{{ theme_options.offcanvas_side }}-small">
+        <a class="{{ theme_options.offcanvas_side }}-off-canvas-toggle menu-icon" href="#">
+            <span></span>
+        </a>
+    </section>
+</nav>

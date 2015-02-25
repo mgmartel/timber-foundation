@@ -1,0 +1,80 @@
+{#
+
+The comment list. I don't like how complicated this is, but then comments are
+the most interactive parts of a theme, so you can expect some extra complexity.
+I do think there is a lot of room for improvement here.
+
+#}
+{%	if post.password_required %}
+	<section id="comments">
+		<div class="notice">
+			<p class="bottom">{{__('This post is password protected. Enter the password to view comments.', 'timber-foundation')}}</p>
+		</div>
+	</section>
+
+{% elseif post.get_comments or 'open' == post.comment_status %}
+
+    <section id="comments">
+
+        <h3>{{fn('comments_number',__('No Responses to', 'timber-foundation'), __('One Response to', 'timber-foundation'), __('% Responses to', 'timber-foundation'))}} &#8220; {{post.title}} &#8221;</h3>
+
+        <ol class="commentlist">
+            {{fn('wp_list_comments',{type:'comment',callback:['TimberFoundationTemplate','comments']},post.comments)}}
+        </ol>
+
+		<footer>
+			<nav id="comments-nav">
+				<div class="comments-previous">{{fn('previous_comments_link',__( '&larr; Older comments', 'timber-foundation'))}}</div>
+				<div class="comments-next">{{fn('next_comments_link',__( 'Newer comments &rarr;', 'timber-foundation'))}}</div>
+			</nav>
+		</footer>
+
+	</section>
+
+    <section id="respond">
+        {% if post.comment_status == 'open' %}
+            <h3>{{fn('comment_form_title',__('Leave a Reply','timber-foundation'), __('Leave a Reply to %s', 'timber-foundation'))}}</h3>
+            <p class="cancel-comment-reply">{{fn('cancel_comment_reply_link')}}</p>
+
+            {% if site.comment_registration and not is_user_logged_in %}
+                <p>{{__('You must be <a href="%s">logged in</a> to post a comment.', 'timber-foundation')|format(wp_login_url(post.link))}}</p>
+
+            {% else %}
+
+                {# @todo Make required with Foundation JS #}
+                <form action="{{site.url}}/wp-comments-post.php" method="post" id="commentform">
+                    {% if is_user_logged_in %}
+                        <p>{{__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'timber-foundation')|format(site.url,current_user.display_name)}} <a href="{{wp_logout_url(post.link)}}" title="{{__('Log out of this account', 'timber-foundation') }}">{{ __('Log out &raquo;', 'timber-foundation') }}</a></p>
+
+                    {% else %}
+                        <p>
+                            <label for="author">{{__('Name','timber-foundation')}} {{__('(required)','timber-foundation')}}</label>
+                            <input type="text" class="five" name="author" id="author" value="{{comment_author|e}}" size="22" tabindex="1" aria-required='true' />
+                        </p>
+                        <p>
+                            <label for="email">{{__('Email (will not be published)', 'timber-foundation')}} {{__('(required)','timber-foundation')}}</label>
+                            <input type="text" class="five" name="email" id="email" value="{{comment_author_email|e}}" size="22" tabindex="2" aria-required='true' />
+                        </p>
+                        <p>
+                            {# @todo Option - Make website option in comment form #}
+                            <label for="url">{{__('Website', 'timber-foundation')}}</label>
+                            <input type="text" class="five" name="url" id="url" value="{{comment_author_url|e}}" size="22" tabindex="3">
+                        </p>
+                    {% endif %}
+                    <p>
+                        <label for="comment">{{__('Comment', 'timber-foundation')}}</label>
+                        <textarea name="comment" id="comment" tabindex="4"></textarea>
+                    </p>
+                    {# @todo Should we always show this? #}
+                    <p id="allowed_tags" class="small"><strong>XHTML:</strong> {{__('You can use these tags:','timber-foundation')}} <code>{{fn('allowed_tags')}}</code></p>
+                    <p><input name="submit" class="small radius button" type="submit" id="submit" tabindex="5" value="{{__('Submit Comment','timber-foundation')|e}}"></p>
+                    {{fn('comment_id_fields')}}
+                    {% do action( 'comment_form', post.id ) %}
+                </form>
+
+            {% endif %}
+        {% endif %}
+
+    </section>
+
+{% endif %}{# password_required #}

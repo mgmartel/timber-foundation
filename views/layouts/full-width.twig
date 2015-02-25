@@ -1,0 +1,17 @@
+{#
+
+Simple no-sidebar full widh layout.
+
+#}
+{% extends "layouts/base.twig" %}
+
+{% block layout %}
+    <div class="row collapse">
+
+        <div class="small-12 large-12 columns no-sidebar" id="content" role="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </div>
+{% endblock %}

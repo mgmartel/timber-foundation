@@ -1,0 +1,24 @@
+{#
+
+This region template loads 2 templates in one: a full-width footer widget and
+a three-column footer widget area. This could be split into 2 region templates.
+
+#}
+
+{# Full width footer widget area. Eg. for sitewide call to action -#}
+{% if is_active_sidebar('footer-wide') %}
+    <div class="full-width footer-widget footer-wide">
+        <div class="row">
+            {{dynamic_sidebar('footer-wide')}}
+        </div>
+    </div>
+{% endif %}
+
+{# Ordinary footer widget area -#}
+{% if is_active_sidebar('footer') %}
+<div class="full-width footer-widget footer-widget-area">
+	<div class="row">
+		{{dynamic_sidebar('footer')}}
+	</div>
+</div>
+{% endif %}

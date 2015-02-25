@@ -1,0 +1,16 @@
+{#
+
+Author box for under single posts.
+
+#}
+<div class="entry-author">
+    <div class="row">
+        <div class="large-3 columns">
+            {{ fn('get_avatar', post.author.user_email, 95 ) }}
+        </div>
+        <div class="large-9 columns">
+            <h4><a href='{{ post.author.link }}' title="{{ post.author.name }}">{{ post.author.name }}</a></h4>
+            <p class="cover-description">{{ post.author.meta('description') }}</p>
+        </div>
+    </div>
+</div>

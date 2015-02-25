@@ -1,0 +1,14 @@
+{#
+
+This template combines Foundations interchange and Timbers image functions to
+automatically serve responsive images for the featured image. No plugin needed!
+
+#}
+{%- if post.thumbnail -%}
+    <figure class="entry-thumbnail">
+        <a href="{{ post.link }}">
+            <img data-interchange="[{{ post.thumbnail.src('post-thumbnail') }}, (default)], [{{ post.thumbnail.src('post-thumbnail')|resize(641) }}, (small)], [{{ post.thumbnail.src('post-thumbnail')|resize(1024) }}, (medium)], [{{ post.thumbnail.src('post-thumbnail') }}, (large)]">
+            <noscript><img src="{{ post.thumbnail.src( 'post-thumbnail' ) }}"  alt="{{ post.thumbnail.alt }}" title="{{ post.thumbnail.title }}" /></noscript>
+        </a>
+    </figure>
+{%- endif -%}

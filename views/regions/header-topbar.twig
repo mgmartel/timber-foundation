@@ -1,0 +1,31 @@
+{#
+
+Foundation Top Bar. Stickyness and contain-to-grid are arranged through
+topbar_classes in TimberFoundation_ThemeOptions
+
+See: http://foundation.zurb.com/docs/components/topbar.html
+
+#}
+<div class="wrapper {{ theme_options.topbar_classes }}">
+    <nav class="top-bar" data-topbar>
+
+        {% block title_area %}
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="{{site.url}}" title="{{site.name}}" rel="home">{{site.name}}</a></h1>
+                </li>
+
+                {# Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone #}
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+        {% endblock %}
+
+        <section class="top-bar-section" role="navigation">
+            {% block navigation %}
+                {{menu_left}}
+                {{menu_right}}
+            {% endblock %}
+        </section>
+
+    </nav>
+</div>

@@ -1,0 +1,11 @@
+{#
+
+This is a good example of where complex logic has moved to the theme controller,
+but the 'display logic' is still handled by simply loading a view. Timber Regions
+takes care of loading pagination where necessary by including this file. This
+file in turn renders pagination through the complex pagination function defined
+in `TimberFoundationTemplate::pagination` and added in
+`TimberFoundationSite::add_to_twig`.
+
+#}
+{{pagination()}}

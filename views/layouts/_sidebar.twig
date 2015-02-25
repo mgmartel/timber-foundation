@@ -1,0 +1,22 @@
+{#
+
+This is the parent template for all sidebar layouts. The only thing that changes
+between layouts are the classes. Because Foundation's grid is quite good at
+dealing with source order, we can get away with this. Check out the sidebar
+templates to see how this works out!
+
+#}
+{% extends "layouts/base.twig" %}
+
+{% block layout %}
+    <div class="row">
+
+        <div class="{{ content_classes|default('small-12 large-8') }} columns" id="content" role="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% include 'partials/sidebar.twig' %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{#
+
+This partial renders the sidebar itself. Because the width of the sidebar depends
+on a layout and we want the partial to be agnostic of the layout, the sidebar
+classes trickle down from the layouts to here. This way the sidebar width can
+even become a theme option quite simply.
+
+#}
+{% if is_active_sidebar('sidebar') %}
+    <aside id="sidebar" class="{{sidebar_classes|default('small-12 large-4')}} columns">
+        {{dynamic_sidebar('sidebar')}}
+    </aside>
+{% endif %}

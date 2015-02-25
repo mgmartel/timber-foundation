@@ -1,0 +1,41 @@
+{#
+
+Foundation's offcanvas menu requires the 'canvas' to be wrapped in a single
+element. This is a good occasion to display the power of wrappers in Timber
+Regions. You won't need them often, but they are a very handy tool if you
+do need to replace the outer skeleton of your pages.
+
+Just try to imagine doing this in a normal WP theme. The most elegant way would
+probably be with conditionals in header.php and footer.php. Now compare that to
+a simple call to `TimberFoundationRegions::set_wrapper( 'offcanvas' );`.
+
+#}
+{% extends "wrappers/default.twig" %}
+
+{% block body %}
+    <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block offcanvas %}
+                <aside class="{{ theme_options.offcanvas_side }}-off-canvas-menu">
+                    {% include 'regions/_get_region.twig' with { region: 'offcanvas' } %}
+                </aside>
+            {% endblock %}
+
+            {% block main %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+
+            <a class="exit-off-canvas"></a>
+
+        </div>
+    </div>
+{% endblock %}

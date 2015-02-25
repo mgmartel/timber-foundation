@@ -1,0 +1,22 @@
+{#
+
+A horizontal footer menu
+
+#}
+{% if footer_menu.get_items %}
+    <div class="full-width footer-menu">
+
+        <div class="row">
+            <div class="large-12 columns">
+                <ul class="inline-list">
+                    {% for item in footer_menu.get_items %}
+                    <li id="menu-item-{{item.ID}}" class="menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}">
+                        <a href="{{item.link}}">{{item.title}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+{% endif %}

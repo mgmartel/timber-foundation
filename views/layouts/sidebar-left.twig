@@ -1,0 +1,11 @@
+{#
+
+This template uses the sidebar parent template. All it does is change the
+respective classes of the content pane and the sidebar pane to modify the
+source ordering.
+
+#}
+{% extends "layouts/_sidebar.twig" %}
+
+{% set content_classes = 'small-12 large-8 large-push-4' %}
+{% set sidebar_classes = 'small-12 large-4 large-pull-8' %}
