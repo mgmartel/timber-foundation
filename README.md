@@ -4,7 +4,9 @@
 
 This is Timber Foundation, a starter theme for [WordPress](http://wordpress.org/) and [Timber](https://github.com/jarednova/timber/) using [Zurb Foundation](http://foundation.zurb.com/) and [Timber Regions](https://github.com/mgmartel/timber-regions). It is heavily based on the [Reverie](http://themefortress.com/reverie/) Foundation theme.
 
-This theme is intended as a base for building your own Foundation themes using Timber Regions. It is also a proof-of-concept to show the power of the Timber Regions framework. Every directory and file is documented, so it is also a good introduction into working with Timber Regions. 
+> *Note:* Just like Timber Regions, this theme depends on the Timber template autoloader, which has not been merged into the main Timber branch (yet). You can find the Timber branch [here](https://github.com/mgmartel/timber/tree/template-autoloader). For more info, read the [pull request](https://github.com/jarednova/timber/pull/281).
+
+This theme is intended as a base for building your own Foundation themes using Timber Regions. It is also a proof-of-concept to show the power of the Timber Regions framework. Every directory and file is documented, so it is also a good introduction into working with Timber Regions.
 
 To get started, just browse through this repo! Every folder comes with its own `README`, to guide you through understanding the code.
 
@@ -49,7 +51,7 @@ Even though it has its own parent theme, Timber Regions does not use the parent/
 
 The theme is now a good base to quickly prototype a child theme using Foundation. Seriously, for mocking up designs and layouts it makes for incredibly rapid prototyping.
 
-However, together with Timber Regions, I think it has the potential to become a quite powerful theme framework for any WP project. This should mostly happen in Timber Regions, so that the theme framework stays CSS framework agnostic. Maybe Timber Regions should be based more on `_s` and use that as a guide to make sure all the bases are covered. 
+However, together with Timber Regions, I think it has the potential to become a quite powerful theme framework for any WP project. This should mostly happen in Timber Regions, so that the theme framework stays CSS framework agnostic. Maybe Timber Regions should be based more on `_s` and use that as a guide to make sure all the bases are covered.
 
 I am curious to hear anybody else's thoughts on this!
 
